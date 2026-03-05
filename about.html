@@ -27,18 +27,26 @@
     @keyframes fadeUp { 0% { opacity:0; transform:translateY(50px); } 100% { opacity:1; transform:translateY(0); } }
     @keyframes fadeInScale { 0% { opacity:0; transform:scale(0.8); } 100% { opacity:1; transform:scale(1); } }
     @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-20px); } }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
     @keyframes pulse { 0%,100%{box-shadow:0 0 0 0 rgba(6,214,160,0.4)} 70%{box-shadow:0 0 0 8px rgba(6,214,160,0)} }
     @keyframes shimmer { 0% { background-position: -1000px 0; } 100% { background-position: 1000px 0; } }
-    .fade-up { animation: fadeUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) both; }
-    .fade-scale { animation: fadeInScale 0.8s cubic-bezier(0.4, 0, 0.2, 1) both; }
+    .fade-up-1 { animation: fadeUp 0.8s 0.1s cubic-bezier(0.4, 0, 0.2, 1) both; }
+    .fade-up-2 { animation: fadeUp 0.8s 0.3s cubic-bezier(0.4, 0, 0.2, 1) both; }
+    .fade-up-3 { animation: fadeUp 0.8s 0.5s cubic-bezier(0.4, 0, 0.2, 1) both; }
+    .fade-up-4 { animation: fadeUp 0.8s 0.7s cubic-bezier(0.4, 0, 0.2, 1) both; }
     .float-anim { animation: float 3s ease-in-out infinite; }
+    .blink-dot { animation: blink 2s infinite; }
     .pulse-dot { animation: pulse 2s infinite; }
+    .underline-anim { position: relative; display: inline-block; }
+    .underline-anim::after { content:''; position:absolute; left:0; bottom:-3px; right:0; height:6px; background:linear-gradient(90deg,#FF6B35,#FFD166,#FF6B35); border-radius:3px; animation: shimmer 3s infinite; background-size: 1000px 100%; }
     .nav-link { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
     .nav-link:hover, .nav-link.active { color: #FF6B35 !important; background: rgba(255,107,53,0.08); border-radius: 8px; transform: translateY(-2px); }
     .btn-brand { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); position: relative; overflow: hidden; }
     .btn-brand::before { content: ''; position: absolute; top: 50%; left: 50%; width: 0; height: 0; border-radius: 50%; background: rgba(255,255,255,0.3); transition: width 0.6s, height 0.6s, top 0.6s, left 0.6s; }
     .btn-brand:hover::before { width: 300px; height: 300px; top: -150px; left: -150px; }
     .btn-brand:hover { background: #D94F1E; transform: translateY(-3px) scale(1.05); box-shadow: 0 12px 35px rgba(255,107,53,0.5); }
+    .btn-outline { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+    .btn-outline:hover { background: #FF6B35; color: white; transform: translateY(-3px) scale(1.05); }
     .feature-card { transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); border: 2px solid transparent; }
     .feature-card:hover { border-color: #FF6B35; transform: translateY(-10px) scale(1.03); box-shadow: 0 25px 60px rgba(255,107,53,0.25); }
     .feature-card:hover .icon-box { transform: scale(1.2) rotate(10deg); }
@@ -89,22 +97,23 @@
 <div class="pt-[72px]">
 
 <!-- HERO SECTION -->
-<section class="relative py-32 px-6 overflow-hidden" style="background: linear-gradient(135deg, #0a1628 0%, #1a3a5c 50%, #0d2137 100%);">
+<section class="relative py-32 px-6 overflow-hidden" style="background: linear-gradient(135deg, #0a1628 0%, #1a3a5c 50%, #0d2137 100%)">
   <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle, rgba(255,255,255,0.1) 1.5px, transparent 1.5px); background-size: 30px 30px;"></div>
   <div class="absolute top-20 right-10 text-9xl opacity-5 float-anim">✈️</div>
   <div class="absolute bottom-20 left-10 text-8xl opacity-5 float-anim" style="animation-delay: 1s;">🌍</div>
   
   <div class="max-w-5xl mx-auto text-center relative z-10">
-    <div class="fade-up inline-flex items-center gap-2 bg-yellow-400/20 backdrop-blur-sm border border-yellow-400/40 text-yellow-300 px-5 py-2 rounded-full text-sm font-bold tracking-widest uppercase mb-6">
-      ✨ About Us
+    <div class="fade-up-1 inline-flex items-center gap-2 bg-yellow-400/20 backdrop-blur-sm border border-yellow-400/40 text-yellow-300 px-5 py-2 rounded-full text-sm font-bold tracking-widest uppercase mb-8">
+      <span class="w-2.5 h-2.5 bg-yellow-300 rounded-full blink-dot"></span>
+      About Us
     </div>
-    <h1 class="fade-up text-6xl lg:text-7xl font-black text-white leading-tight mb-6" style="animation-delay: 0.2s;">
+    <h1 class="fade-up-2 text-6xl lg:text-8xl font-black text-white leading-tight mb-6">
       Welcome to<br>
-      <span class="text-brand">SA Dream Destination</span>
+      <span class="text-brand underline-anim">SA Dream Destination</span>
     </h1>
-    <p class="fade-up text-xl text-white/80 leading-relaxed max-w-3xl mx-auto" style="animation-delay: 0.4s;">
-      <span class="text-yellow-300 font-bold text-2xl">"Turning Dreams into Journeys & Memories"</span><br>
-      Your trusted travel partner from Kalyan, Mumbai
+    <p class="fade-up-3 text-xl lg:text-2xl text-white/95 leading-relaxed max-w-3xl mx-auto">
+      <span class="text-yellow-300 font-bold">"Turning Dreams into Journeys & Memories"</span><br>
+      <span class="text-lg">Your trusted travel partner from Kalyan, Mumbai</span>
     </p>
   </div>
 </section>
@@ -123,8 +132,8 @@
           Whether you're planning a romantic honeymoon, a family vacation, or a group adventure, we're here to create unforgettable experiences tailored just for you.
         </p>
         <div class="flex flex-wrap gap-4">
-          <a href="packages.html" class="btn-brand bg-brand text-white px-8 py-4 rounded-xl font-bold text-base no-underline">View Packages</a>
-          <a href="contact.html" class="border-2 border-brand text-brand px-8 py-4 rounded-xl font-bold text-base no-underline hover:bg-brand hover:text-white transition-all">Contact Us</a>
+          <a href="packages.html" class="btn-brand bg-brand text-white px-10 py-5 rounded-2xl font-black text-lg no-underline">View Packages</a>
+          <a href="contact.html" class="btn-outline border-2 border-brand text-brand px-10 py-5 rounded-2xl font-black text-lg no-underline">Contact Us</a>
         </div>
       </div>
       <div class="scroll-reveal relative" style="transition-delay: 0.2s;">
@@ -237,7 +246,7 @@
 
     <div class="flex flex-wrap gap-4 justify-center">
       <a href="contact.html" class="btn-brand bg-brand text-white px-10 py-5 rounded-2xl font-black text-lg no-underline">📞 Contact Us Now</a>
-      <a href="packages.html" class="border-2 border-white/50 text-white px-10 py-5 rounded-2xl font-black text-lg no-underline hover:bg-white/10 transition-all">🗺️ View Packages</a>
+      <a href="packages.html" class="btn-outline border-2 border-white/50 text-white px-10 py-5 rounded-2xl font-black text-lg no-underline hover:bg-white/10 transition-all">🗺️ View Packages</a>
     </div>
   </div>
 </section>
