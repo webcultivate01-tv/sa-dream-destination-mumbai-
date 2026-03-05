@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SA Dream Destination | Home</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: '#FF6B35',
+            branddark: '#D94F1E',
+            navy: '#0F1F2E',
+            navy2: '#1A3A5C',
+            cream: '#FFF8F4',
+          },
+          fontFamily: { poppins: ['Poppins', 'sans-serif'] },
+        }
+      }
+    }
+  </script>
+  <style>
+    * { font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
+    .hero-slider { position: relative; height: 100vh; overflow: hidden; }
+    .slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 2s ease-in-out; }
+    .slide.active { opacity: 1; }
+    .slide img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.8); }
+    .slide-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(0,0,0,0.65) 0%, rgba(255,107,53,0.2) 100%); }
+    @keyframes slideZoom { 0% { transform: scale(1); } 100% { transform: scale(1.15); } }
+    @keyframes slideIn { 0% { transform: translateX(-100px); opacity: 0; } 100% { transform: translateX(0); opacity: 1; } }
+    .slide.active img { animation: slideZoom 10s ease-out forwards; }
+    .slider-dots { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); display: flex; gap: 12px; z-index: 20; }
+    .dot { width: 12px; height: 12px; border-radius: 50%; background: rgba(255,255,255,0.5); cursor: pointer; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); border: 2px solid transparent; }
+    .dot:hover { background: rgba(255,255,255,0.8); transform: scale(1.2); }
+    .dot.active { background: #FF6B35; width: 40px; border-radius: 6px; border-color: rgba(255,255,255,0.3); }
+    @keyframes fadeUp { 0% { opacity:0; transform:translateY(50px); } 100% { opacity:1; transform:translateY(0); } }
+    @keyframes fadeInScale { 0% { opacity:0; transform:scale(0.8); } 100% { opacity:1; transform:scale(1); } }
+    @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-20px); } }
+    @keyframes rotateGlow { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+    @keyframes pulse { 0%,100%{box-shadow:0 0 0 0 rgba(6,214,160,0.4)} 70%{box-shadow:0 0 0 8px rgba(6,214,160,0)} }
+    @keyframes shimmer { 0% { background-position: -1000px 0; } 100% { background-position: 1000px 0; } }
+    .fade-up-1 { animation: fadeUp 0.8s 0.1s cubic-bezier(0.4, 0, 0.2, 1) both; }
+    .fade-up-2 { animation: fadeUp 0.8s 0.3s cubic-bezier(0.4, 0, 0.2, 1) both; }
+    .fade-up-3 { animation: fadeUp 0.8s 0.5s cubic-bezier(0.4, 0, 0.2, 1) both; }
+    .fade-up-4 { animation: fadeUp 0.8s 0.7s cubic-bezier(0.4, 0, 0.2, 1) both; }
+    .fade-up-5 { animation: fadeUp 0.8s 0.9s cubic-bezier(0.4, 0, 0.2, 1) both; }
+    .float-anim { animation: float 3s ease-in-out infinite; }
+    .blink-dot { animation: blink 2s infinite; }
+    .pulse-dot { animation: pulse 2s infinite; }
+    .glow-rotate { animation: rotateGlow 20s linear infinite; }
+    .underline-anim { position: relative; display: inline-block; }
+    .underline-anim::after { content:''; position:absolute; left:0; bottom:-3px; right:0; height:6px; background:linear-gradient(90deg,#FF6B35,#FFD166,#FF6B35); border-radius:3px; animation: shimmer 3s infinite; background-size: 1000px 100%; }
+    .card-hover { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+    .card-hover:hover { transform: translateY(-10px) scale(1.02); box-shadow: 0 25px 60px rgba(255,107,53,0.25); }
+    .nav-link { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+    .nav-link:hover, .nav-link.active { color: #FF6B35 !important; background: rgba(255,107,53,0.08); border-radius: 8px; transform: translateY(-2px); }
+    .btn-brand { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); position: relative; overflow: hidden; }
+    .btn-brand::before { content: ''; position: absolute; top: 50%; left: 50%; width: 0; height: 0; border-radius: 50%; background: rgba(255,255,255,0.3); transition: width 0.6s, height 0.6s, top 0.6s, left 0.6s; }
+    .btn-brand:hover::before { width: 300px; height: 300px; top: -150px; left: -150px; }
+    .btn-brand:hover { background: #D94F1E; transform: translateY(-3px) scale(1.05); box-shadow: 0 12px 35px rgba(255,107,53,0.5); }
+    .btn-outline { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+    .btn-outline:hover { background: rgba(255,255,255,0.25); backdrop-filter: blur(10px); transform: translateY(-3px) scale(1.05); border-color: white; }
+    .pkg-card { transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); border: 2px solid transparent; }
+    .pkg-card:hover { transform: translateY(-12px) rotate(-1deg); box-shadow: 0 30px 70px rgba(255,107,53,0.3); border-color: #FF6B35; }
+    .pkg-card:hover .book-btn { background: #FF6B35; color: white; transform: scale(1.1); }
+    .pkg-card .book-btn { transition: all 0.3s; }
+    .svc-card { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); border: 2px solid transparent; }
+    .svc-card:hover { border-color: #FF6B35; transform: translateY(-8px) scale(1.03); box-shadow: 0 20px 50px rgba(255,107,53,0.2); background: white; }
+    .svc-card:hover .w-14 { transform: scale(1.2) rotate(10deg); }
+    .svc-card .w-14 { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+    .why-card { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); border: 2px solid transparent; }
+    .why-card:hover { border-color: #FF6B35; transform: translateY(-8px) scale(1.05); box-shadow: 0 20px 50px rgba(255,107,53,0.15); background: white; }
+    .why-card:hover .w-16 { transform: scale(1.3) rotate(-10deg); }
+    .why-card .w-16 { transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+    .scroll-reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
+    .scroll-reveal.active { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body class="bg-cream text-navy">
+
+<!-- ════════════════════════════
+     NAVBAR
+════════════════════════════ -->
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur shadow-sm" style="height:72px;">
+  <div class="max-w-7xl mx-auto px-6 h-full flex items-center justify-between">
+
+    <!-- Logo -->
+    <a href="index.html" class="flex items-center gap-3 no-underline">
+      <div class="w-10 h-10 rounded-xl bg-brand flex items-center justify-center text-xl">✈️</div>
+      <div>
+        <div class="font-black text-navy leading-none text-base">SA <span class="text-brand">Dream</span> Destination</div>
+        <div class="text-xs text-gray-400 tracking-widest uppercase">Travel Agency · Kalyan / Mumbai</div>
+      </div>
+    </a>
+
+    <!-- Desktop Nav -->
+    <ul class="hidden lg:flex gap-1 list-none m-0 p-0">
+      <li><a href="index.html" class="nav-link active px-4 py-2 text-sm font-semibold text-gray-500 no-underline">Home</a></li>
+      <li><a href="about.html" class="nav-link px-4 py-2 text-sm font-semibold text-gray-500 no-underline">About</a></li>
+      <li><a href="packages.html" class="nav-link px-4 py-2 text-sm font-semibold text-gray-500 no-underline">Packages</a></li>
+      <li><a href="services.html" class="nav-link px-4 py-2 text-sm font-semibold text-gray-500 no-underline">Services</a></li>
+      <li><a href="contact.html" class="nav-link px-4 py-2 text-sm font-semibold text-gray-500 no-underline">Contact</a></li>
+    </ul>
+
+    <!-- Right -->
+    <div class="hidden lg:flex items-center gap-3">
+      <span class="text-sm font-bold text-navy2">📞 000XXXXX</span>
+      <a href="contact.html" class="btn-brand bg-brand text-white px-5 py-2.5 rounded-xl text-sm font-bold no-underline">Book Now</a>
+    </div>
+
+    <!-- Hamburger -->
+    <button id="ham-btn" class="lg:hidden flex flex-col gap-1.5 p-2 bg-transparent border-0 cursor-pointer">
+      <span class="w-6 h-0.5 bg-navy rounded block"></span>
+      <span class="w-6 h-0.5 bg-navy rounded block"></span>
+      <span class="w-6 h-0.5 bg-navy rounded block"></span>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mob-menu" class="hidden lg:hidden bg-white border-t border-gray-100 px-6 pb-5 pt-3 shadow-lg">
+    <a href="index.html" class="block py-3 text-base font-semibold text-brand border-b border-gray-100 no-underline">🏠 Home</a>
+    <a href="about.html" class="block py-3 text-base font-semibold text-navy border-b border-gray-100 no-underline">👤 About</a>
+    <a href="packages.html" class="block py-3 text-base font-semibold text-navy border-b border-gray-100 no-underline">🗺️ Packages</a>
+    <a href="services.html" class="block py-3 text-base font-semibold text-navy border-b border-gray-100 no-underline">🛎️ Services</a>
+    <a href="contact.html" class="block py-3 text-base font-semibold text-navy border-b border-gray-100 no-underline">📞 Contact</a>
+    <a href="contact.html" class="mt-4 block text-center bg-brand text-white py-3 rounded-xl font-bold no-underline">Book Now – 000XXXXX</a>
+  </div>
+</nav>
+
+<div class="pt-[72px]">
+
+<!-- ════════════════════════════
+     HERO SLIDER
+════════════════════════════ -->
+<section class="hero-slider">
+  <!-- Slide 1 - Manali -->
+  <div class="slide active">
+    <img src="https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=1920&q=80" alt="Manali Mountains">
+    <div class="slide-overlay"></div>
+  </div>
+  <!-- Slide 2 - Kashmir -->
+  <div class="slide">
+    <img src="https://images.unsplash.com/photo-1605649487212-47bdab064df7?w=1920&q=80" alt="Kashmir Dal Lake">
+    <div class="slide-overlay"></div>
+  </div>
+  <!-- Slide 3 - Ooty -->
+  <div class="slide">
+    <img src="https://images.unsplash.com/photo-1596895111956-bf1cf0599ce5?w=1920&q=80" alt="Ooty Tea Gardens">
+    <div class="slide-overlay"></div>
+  </div>
+  <!-- Slide 4 - Darjeeling -->
+  <div class="slide">
+    <img src="https://images.unsplash.com/photo-1587474260584-136574528ed5?w=1920&q=80" alt="Darjeeling Hills">
+    <div class="slide-overlay"></div>
+  </div>
+
+  <!-- Content Overlay -->
+  <div class="absolute inset-0 flex items-center z-10">
+    <div class="max-w-7xl mx-auto px-6 w-full text-center">
+      <div class="max-w-4xl mx-auto">
+        <div class="fade-up-1 inline-flex items-center gap-2 bg-yellow-400/20 backdrop-blur-sm border border-yellow-400/40 text-yellow-300 px-5 py-2 rounded-full text-sm font-bold tracking-widest uppercase mb-8">
+          <span class="w-2.5 h-2.5 bg-yellow-300 rounded-full blink-dot"></span>
+          Kalyan / Mumbai • Open 24/7
+        </div>
+
+        <h1 class="fade-up-2 text-6xl lg:text-8xl font-black text-white leading-tight mb-6">
+          Your <span class="text-brand underline-anim">Dream</span><br>
+          Trip Starts Here!
+        </h1>
+
+        <p class="fade-up-3 text-xl lg:text-2xl text-white/95 leading-relaxed mb-10 max-w-3xl mx-auto">
+          <span class="text-yellow-300 font-bold">"Turning Dreams into Journeys & Memories"</span><br>
+          <span class="text-lg">Safe • Affordable • Trusted Travel Partner</span>
+        </p>
+
+        <div class="fade-up-4 flex flex-wrap gap-5 justify-center mb-12">
+          <a href="packages.html" class="btn-brand bg-brand text-white px-10 py-5 rounded-2xl font-black text-lg no-underline shadow-2xl">🗺️ Explore Packages</a>
+          <a href="contact.html" class="btn-outline border-3 border-white/70 bg-white/15 backdrop-blur-md text-white px-10 py-5 rounded-2xl font-black text-lg no-underline">📞 Call Us Now</a>
+        </div>
+
+        <!-- Stats bar -->
+        <div class="fade-up-5 inline-grid grid-cols-4 border-2 border-white/30 rounded-3xl overflow-hidden bg-white/10 backdrop-blur-md max-w-2xl">
+          <div class="py-6 text-center border-r-2 border-white/30">
+            <div class="text-3xl font-black text-brand">4+</div>
+            <div class="text-xs text-white/80 mt-2 uppercase tracking-wider font-bold">Packages</div>
+          </div>
+          <div class="py-6 text-center border-r-2 border-white/30">
+            <div class="text-3xl font-black text-brand">24/7</div>
+            <div class="text-xs text-white/80 mt-2 uppercase tracking-wider font-bold">Available</div>
+          </div>
+          <div class="py-6 text-center border-r-2 border-white/30">
+            <div class="text-3xl font-black text-brand">₹20k</div>
+            <div class="text-xs text-white/80 mt-2 uppercase tracking-wider font-bold">Starting</div>
+          </div>
+          <div class="py-6 text-center">
+            <div class="text-3xl font-black text-brand">100%</div>
+            <div class="text-xs text-white/80 mt-2 uppercase tracking-wider font-bold">Trusted</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slider Dots -->
+  <div class="slider-dots">
+    <span class="dot active" data-slide="0"></span>
+    <span class="dot" data-slide="1"></span>
+    <span class="dot" data-slide="2"></span>
+    <span class="dot" data-slide="3"></span>
+  </div>
+</section>
+
+<!-- ════════════════════════════
+     SEARCH BAR
+════════════════════════════ -->
+<div class="bg-white px-6 py-0">
+  <div class="max-w-5xl mx-auto">
+    <div class="-translate-y-7 bg-white rounded-2xl shadow-2xl grid grid-cols-1 md:grid-cols-4 overflow-hidden border border-gray-100">
+      <div class="p-5 border-b md:border-b-0 md:border-r border-gray-100">
+        <label class="text-[10px] font-black text-brand uppercase tracking-widest block mb-1">🗺️ Destination</label>
+        <select class="w-full border-0 outline-none text-sm font-semibold text-navy bg-transparent">
+          <option>Where to go?</option>
+          <option>Manali – Himachal Pradesh</option>
+          <option>Kashmir – Srinagar/Gulmarg</option>
+          <option>Ooty & Kodaikanal</option>
+          <option>Darjeeling – West Bengal</option>
+          <option>International Tour</option>
+        </select>
+      </div>
+      <div class="p-5 border-b md:border-b-0 md:border-r border-gray-100">
+        <label class="text-[10px] font-black text-brand uppercase tracking-widest block mb-1">📅 Travel Date</label>
+        <input type="date" class="w-full border-0 outline-none text-sm font-semibold text-navy bg-transparent"/>
+      </div>
+      <div class="p-5 border-b md:border-b-0 md:border-r border-gray-100">
+        <label class="text-[10px] font-black text-brand uppercase tracking-widest block mb-1">👥 Travellers</label>
+        <select class="w-full border-0 outline-none text-sm font-semibold text-navy bg-transparent">
+          <option>Group Size</option>
+          <option>1 – Solo</option>
+          <option>2 – Couple</option>
+          <option>3–5 – Small Group</option>
+          <option>6–15 – Group</option>
+          <option>15+ – Large Group</option>
+        </select>
+      </div>
+      <button onclick="window.location='contact.html'" class="btn-brand bg-brand text-white p-5 font-black text-sm flex items-center justify-center gap-2 border-0 cursor-pointer">🔍 Search Trips</button>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════
+     WHY CHOOSE US
+════════════════════════════ -->
+<section class="bg-white py-20 px-6">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-14">
+      <span class="inline-flex items-center gap-2 bg-brand/10 text-brand px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-widest mb-4">✨ Why Choose Us</span>
+      <h2 class="text-4xl font-black text-navy mb-3">Travel With <span class="text-brand">Confidence</span></h2>
+      <p class="text-gray-500 text-base max-w-xl mx-auto">We make every journey safe, comfortable & memorable at prices that won't break your bank.</p>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      <div class="why-card bg-orange-50 rounded-2xl p-8 text-center cursor-default" style="transition-delay: 0.1s;">
+        <div class="w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-5">🛡️</div>
+        <h3 class="font-black text-navy text-base mb-2">Safe & Comfortable</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">Every trip is carefully planned to ensure your safety and comfort throughout the journey.</p>
+      </div>
+      <div class="why-card bg-green-50 rounded-2xl p-8 text-center cursor-default" style="transition-delay: 0.2s;">
+        <div class="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-5">💰</div>
+        <h3 class="font-black text-navy text-base mb-2">Affordable Prices</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">Premium travel experiences at honest, competitive prices — no hidden charges, ever.</p>
+      </div>
+      <div class="why-card bg-yellow-50 rounded-2xl p-8 text-center cursor-default" style="transition-delay: 0.3s;">
+        <div class="w-16 h-16 bg-yellow-100 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-5">🤝</div>
+        <h3 class="font-black text-navy text-base mb-2">Trusted Service</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">100% transparent and reliable. We deliver exactly what we promise, every single time.</p>
+      </div>
+      <div class="why-card bg-blue-50 rounded-2xl p-8 text-center cursor-default" style="transition-delay: 0.4s;">
+        <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-5">🕐</div>
+        <h3 class="font-black text-navy text-base mb-2">24/7 Support</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">We're always available — day, night, weekday or holiday. Call us anytime!</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════
+     PACKAGES
+════════════════════════════ -->
+<section class="bg-orange-50/60 py-20 px-6">
+  <div class="max-w-6xl mx-auto">
+    <div class="flex flex-col md:flex-row items-start md:items-end justify-between mb-14 gap-4">
+      <div>
+        <span class="inline-flex items-center gap-2 bg-brand/10 text-brand px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-widest mb-4">🗺️ Tour Packages</span>
+        <h2 class="text-4xl font-black text-navy mb-2">Popular <span class="text-brand">Destinations</span></h2>
+        <p class="text-gray-500">Handpicked trips starting from just ₹20,000 per person!</p>
+      </div>
+      <a href="packages.html" class="btn-brand bg-brand text-white px-6 py-3 rounded-xl font-bold text-sm no-underline whitespace-nowrap">View All →</a>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      <!-- Manali -->
+      <a href="packages.html" class="pkg-card bg-white rounded-2xl overflow-hidden no-underline shadow-sm block" style="transition-delay: 0.1s;">
+        <div class="h-48 flex items-center justify-center text-7xl relative" style="background:linear-gradient(135deg,#6AAFE6,#2560A8);">
+          🏔️
+          <span class="absolute top-3 right-3 bg-black/40 text-white text-xs font-bold px-3 py-1 rounded-full backdrop-blur-sm">5N/6D</span>
+        </div>
+        <div class="p-5">
+          <div class="text-xs font-black text-brand uppercase tracking-wider mb-1">📍 Himachal Pradesh</div>
+          <h3 class="font-black text-navy text-lg mb-1">Manali</h3>
+          <p class="text-gray-400 text-xs mb-4">Solang Valley · Rohtang Pass · Atal Tunnel</p>
+          <div class="flex items-center justify-between border-t border-gray-100 pt-4">
+            <div>
+              <div class="text-brand font-black text-lg">₹20,000</div>
+              <div class="text-gray-400 text-xs">per person</div>
+            </div>
+            <span class="book-btn bg-navy text-white text-xs font-bold px-4 py-2 rounded-lg transition-colors">Book Now</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Kashmir -->
+      <a href="packages.html" class="pkg-card bg-white rounded-2xl overflow-hidden no-underline shadow-sm block" style="transition-delay: 0.2s;">
+        <div class="h-48 flex items-center justify-center text-7xl relative" style="background:linear-gradient(135deg,#6DC8C1,#1A8A83);">
+          🌷
+          <span class="absolute top-3 right-3 bg-black/40 text-white text-xs font-bold px-3 py-1 rounded-full backdrop-blur-sm">5N/6D</span>
+        </div>
+        <div class="p-5">
+          <div class="text-xs font-black text-brand uppercase tracking-wider mb-1">📍 Jammu & Kashmir</div>
+          <h3 class="font-black text-navy text-lg mb-1">Kashmir</h3>
+          <p class="text-gray-400 text-xs mb-4">Srinagar · Gulmarg · Sonmarg · Pahalgam</p>
+          <div class="flex items-center justify-between border-t border-gray-100 pt-4">
+            <div>
+              <div class="text-brand font-black text-lg">₹27,000</div>
+              <div class="text-gray-400 text-xs">per person</div>
+            </div>
+            <span class="book-btn bg-navy text-white text-xs font-bold px-4 py-2 rounded-lg transition-colors">Book Now</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Ooty -->
+      <a href="packages.html" class="pkg-card bg-white rounded-2xl overflow-hidden no-underline shadow-sm block" style="transition-delay: 0.3s;">
+        <div class="h-48 flex items-center justify-center text-7xl relative" style="background:linear-gradient(135deg,#84C97A,#2E8A33);">
+          🌿
+          <span class="absolute top-3 right-3 bg-black/40 text-white text-xs font-bold px-3 py-1 rounded-full backdrop-blur-sm">4N/5D</span>
+        </div>
+        <div class="p-5">
+          <div class="text-xs font-black text-brand uppercase tracking-wider mb-1">📍 Tamil Nadu</div>
+          <h3 class="font-black text-navy text-lg mb-1">Ooty & Kodaikanal</h3>
+          <p class="text-gray-400 text-xs mb-4">Ooty Lake · Botanical Garden · Coaker's Walk</p>
+          <div class="flex items-center justify-between border-t border-gray-100 pt-4">
+            <div>
+              <div class="text-brand font-black text-lg">₹20,000</div>
+              <div class="text-gray-400 text-xs">per person</div>
+            </div>
+            <span class="book-btn bg-navy text-white text-xs font-bold px-4 py-2 rounded-lg transition-colors">Book Now</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Darjeeling -->
+      <a href="packages.html" class="pkg-card bg-white rounded-2xl overflow-hidden no-underline shadow-sm block" style="transition-delay: 0.4s;">
+        <div class="h-48 flex items-center justify-center text-7xl relative" style="background:linear-gradient(135deg,#C8A97A,#7A5025);">
+          🍵
+          <span class="absolute top-3 right-3 bg-black/40 text-white text-xs font-bold px-3 py-1 rounded-full backdrop-blur-sm">4N/5D</span>
+        </div>
+        <div class="p-5">
+          <div class="text-xs font-black text-brand uppercase tracking-wider mb-1">📍 West Bengal</div>
+          <h3 class="font-black text-navy text-lg mb-1">Darjeeling</h3>
+          <p class="text-gray-400 text-xs mb-4">Tiger Hill · Batasia Loop · Tea Gardens</p>
+          <div class="flex items-center justify-between border-t border-gray-100 pt-4">
+            <div>
+              <div class="text-brand font-black text-lg">₹20,000</div>
+              <div class="text-gray-400 text-xs">per person</div>
+            </div>
+            <span class="book-btn bg-navy text-white text-xs font-bold px-4 py-2 rounded-lg transition-colors">Book Now</span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════
+     SERVICES
+════════════════════════════ -->
+<section class="bg-white py-20 px-6">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-14">
+      <span class="inline-flex items-center gap-2 bg-brand/10 text-brand px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-widest mb-4">🛎️ Our Services</span>
+      <h2 class="text-4xl font-black text-navy mb-3">Everything You <span class="text-brand">Need</span></h2>
+      <p class="text-gray-500 max-w-lg mx-auto">From hotels to flights, honeymoons to group tours — we handle it all!</p>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <a href="services.html" class="svc-card bg-orange-50 rounded-2xl p-7 no-underline block" style="transition-delay: 0.1s;">
+        <div class="w-14 h-14 bg-orange-100 rounded-xl flex items-center justify-center text-2xl mb-5">🗺️</div>
+        <h3 class="font-black text-navy text-base mb-2">Domestic Tours</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">Explore beautiful India with our curated domestic tour packages.</p>
+      </a>
+      <a href="services.html" class="svc-card bg-blue-50 rounded-2xl p-7 no-underline block" style="transition-delay: 0.2s;">
+        <div class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center text-2xl mb-5">✈️</div>
+        <h3 class="font-black text-navy text-base mb-2">International Tours</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">Dream big and travel the world — we plan everything for you.</p>
+      </a>
+      <a href="services.html" class="svc-card bg-pink-50 rounded-2xl p-7 no-underline block" style="transition-delay: 0.3s;">
+        <div class="w-14 h-14 bg-pink-100 rounded-xl flex items-center justify-center text-2xl mb-5">💑</div>
+        <h3 class="font-black text-navy text-base mb-2">Honeymoon Packages</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">Romantic getaways crafted to make your special moments unforgettable.</p>
+      </a>
+      <a href="services.html" class="svc-card bg-green-50 rounded-2xl p-7 no-underline block" style="transition-delay: 0.4s;">
+        <div class="w-14 h-14 bg-green-100 rounded-xl flex items-center justify-center text-2xl mb-5">👥</div>
+        <h3 class="font-black text-navy text-base mb-2">Group Tours</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">Best rates and fun experiences for families, friends & communities.</p>
+      </a>
+      <a href="services.html" class="svc-card bg-yellow-50 rounded-2xl p-7 no-underline block" style="transition-delay: 0.5s;">
+        <div class="w-14 h-14 bg-yellow-100 rounded-xl flex items-center justify-center text-2xl mb-5">🎒</div>
+        <h3 class="font-black text-navy text-base mb-2">College / School / Office Picnics</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">Smooth, fun & safe outings for students and corporate groups.</p>
+      </a>
+      <a href="services.html" class="svc-card bg-purple-50 rounded-2xl p-7 no-underline block" style="transition-delay: 0.6s;">
+        <div class="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center text-2xl mb-5">🏨</div>
+        <h3 class="font-black text-navy text-base mb-2">Hotel · Flight · Train Booking</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">All your travel bookings handled in one place, hassle-free.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════
+     CTA BANNER
+════════════════════════════ -->
+<section class="py-20 px-6 relative overflow-hidden" style="background:linear-gradient(135deg,#FF6B35,#D94F1E);">
+  <div class="absolute inset-0 flex items-center justify-center text-[18rem] opacity-[0.04] pointer-events-none select-none">✈</div>
+  <div class="max-w-3xl mx-auto text-center relative z-10">
+    <h2 class="text-4xl font-black text-white mb-4">Ready for Your Dream Trip? 🌍</h2>
+    <p class="text-white/80 text-lg mb-10">Contact us today and let's plan the perfect journey for you. Available 24/7!</p>
+    <div class="flex flex-wrap gap-4 justify-center">
+      <a href="contact.html" class="bg-white text-brand font-black px-8 py-4 rounded-2xl text-base no-underline hover:shadow-2xl transition-all hover:-translate-y-1">📞 Contact Us Now</a>
+      <a href="packages.html" class="border-2 border-white/50 text-white font-bold px-8 py-4 rounded-2xl text-base no-underline hover:bg-white/20 transition-all">🗺️ View Packages</a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════
+     TESTIMONIALS
+════════════════════════════ -->
+<section class="bg-orange-50/60 py-20 px-6">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-14">
+      <span class="inline-flex items-center gap-2 bg-brand/10 text-brand px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-widest mb-4">❤️ Happy Travellers</span>
+      <h2 class="text-4xl font-black text-navy">What Customers <span class="text-brand">Say</span></h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="bg-white rounded-2xl p-7 shadow-sm">
+        <div class="text-yellow-400 text-xl tracking-widest mb-4">★★★★★</div>
+        <p class="text-gray-600 text-sm leading-relaxed mb-6 italic">"Amazing experience! The Manali trip was perfectly planned. Every detail was taken care of. Highly recommend SA Dream Destination!"</p>
+        <div class="flex items-center gap-3">
+          <div class="w-11 h-11 rounded-full bg-brand flex items-center justify-center text-white font-black">R</div>
+          <div><div class="font-bold text-navy text-sm">Rahul Sharma</div><div class="text-gray-400 text-xs">Mumbai</div></div>
+        </div>
+      </div>
+      <div class="bg-white rounded-2xl p-7 shadow-sm">
+        <div class="text-yellow-400 text-xl tracking-widest mb-4">★★★★★</div>
+        <p class="text-gray-600 text-sm leading-relaxed mb-6 italic">"Our Kashmir honeymoon was absolutely magical. The team was so helpful and prices were very reasonable. Best travel agency!"</p>
+        <div class="flex items-center gap-3">
+          <div class="w-11 h-11 rounded-full bg-green-500 flex items-center justify-center text-white font-black">P</div>
+          <div><div class="font-bold text-navy text-sm">Priya & Anil</div><div class="text-gray-400 text-xs">Kalyan</div></div>
+        </div>
+      </div>
+      <div class="bg-white rounded-2xl p-7 shadow-sm">
+        <div class="text-yellow-400 text-xl tracking-widest mb-4">★★★★★</div>
+        <p class="text-gray-600 text-sm leading-relaxed mb-6 italic">"Organised our office picnic through SA Dream Destination. Super smooth experience! Very professional and always available!"</p>
+        <div class="flex items-center gap-3">
+          <div class="w-11 h-11 rounded-full bg-yellow-400 flex items-center justify-center text-navy font-black">S</div>
+          <div><div class="font-bold text-navy text-sm">Sneha Patil</div><div class="text-gray-400 text-xs">Thane</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════
+     FOOTER
+════════════════════════════ -->
+<footer class="bg-navy py-16 px-6">
+  <div class="max-w-6xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-white/10">
+      <div>
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 bg-brand rounded-xl flex items-center justify-center text-lg">✈️</div>
+          <div class="font-black text-white text-base">SA <span class="text-brand">Dream</span> Destination</div>
+        </div>
+        <p class="text-white/40 text-sm leading-relaxed mb-5">"Turning Dreams into Journeys & Memories" — Your trusted travel partner from Kalyan, Mumbai.</p>
+        <div class="inline-flex items-center gap-2 bg-green-500/10 border border-green-500/25 text-green-400 px-4 py-2 rounded-xl text-xs font-bold mb-5">
+          <span class="w-2 h-2 bg-green-400 rounded-full pulse-dot"></span>Open 24 Hours / 7 Days
+        </div>
+        <div class="space-y-2">
+          <div class="flex items-center gap-2 text-white/50 text-sm">📍 Kalyan / Mumbai, Maharashtra</div>
+          <div class="flex items-center gap-2 text-white/50 text-sm">📞 000XXXXX</div>
+          <div class="flex items-center gap-2 text-white/50 text-sm">✉️ sadreamdestination@gmail.com</div>
+        </div>
+      </div>
+      <div>
+        <h4 class="text-white/30 text-xs font-black uppercase tracking-widest mb-5">Quick Links</h4>
+        <div class="space-y-3">
+          <a href="index.html" class="block text-white/55 text-sm hover:text-brand no-underline transition-colors">→ Home</a>
+          <a href="about.html" class="block text-white/55 text-sm hover:text-brand no-underline transition-colors">→ About Us</a>
+          <a href="packages.html" class="block text-white/55 text-sm hover:text-brand no-underline transition-colors">→ Packages</a>
+          <a href="services.html" class="block text-white/55 text-sm hover:text-brand no-underline transition-colors">→ Services</a>
+          <a href="contact.html" class="block text-white/55 text-sm hover:text-brand no-underline transition-colors">→ Contact</a>
+        </div>
+      </div>
+      <div>
+        <h4 class="text-white/30 text-xs font-black uppercase tracking-widest mb-5">Packages</h4>
+        <div class="space-y-3">
+          <a href="packages.html" class="block text-white/55 text-sm hover:text-brand no-underline transition-colors">→ Manali (₹20k–27k)</a>
+          <a href="packages.html" class="block text-white/55 text-sm hover:text-brand no-underline transition-colors">→ Kashmir (₹27k–30k)</a>
+          <a href="packages.html" class="block text-white/55 text-sm hover:text-brand no-underline transition-colors">→ Ooty & Kodaikanal (₹20k–25k)</a>
+          <a href="packages.html" class="block text-white/55 text-sm hover:text-brand no-underline transition-colors">→ Darjeeling (₹20k–24k)</a>
+          <a href="contact.html" class="block text-white/55 text-sm hover:text-brand no-underline transition-colors">→ Custom Package</a>
+        </div>
+      </div>
+      <div>
+        <h4 class="text-white/30 text-xs font-black uppercase tracking-widest mb-5">Services</h4>
+        <div class="space-y-3">
+          <a href="services.html" class="block text-white/55 text-sm hover:text-brand no-underline transition-colors">→ Domestic Tours</a>
+          <a href="services.html" class="block text-white/55 text-sm hover:text-brand no-underline transition-colors">→ International Tours</a>
+          <a href="services.html" class="block text-white/55 text-sm hover:text-brand no-underline transition-colors">→ Honeymoon Packages</a>
+          <a href="services.html" class="block text-white/55 text-sm hover:text-brand no-underline transition-colors">→ Group Tours</a>
+          <a href="services.html" class="block text-white/55 text-sm hover:text-brand no-underline transition-colors">→ Hotel/Flight/Train Booking</a>
+        </div>
+      </div>
+    </div>
+    <div class="pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-white/25 text-xs">
+      <span>© 2025 SA Dream Destination. All Rights Reserved.</span>
+      <span>Made with ❤️ in Mumbai</span>
+    </div>
+  </div>
+</footer>
+
+</div><!-- end page-wrapper -->
+
+<script>
+  // Mobile menu toggle
+  document.getElementById('ham-btn').addEventListener('click', () => {
+    document.getElementById('mob-menu').classList.toggle('hidden');
+  });
+
+  // Hero Slider with smooth transitions
+  let currentSlide = 0;
+  const slides = document.querySelectorAll('.slide');
+  const dots = document.querySelectorAll('.dot');
+  const totalSlides = slides.length;
+
+  function showSlide(n) {
+    slides.forEach(slide => slide.classList.remove('active'));
+    dots.forEach(dot => dot.classList.remove('active'));
+    currentSlide = (n + totalSlides) % totalSlides;
+    slides[currentSlide].classList.add('active');
+    dots[currentSlide].classList.add('active');
+  }
+
+  function nextSlide() {
+    showSlide(currentSlide + 1);
+  }
+
+  setInterval(nextSlide, 4000);
+
+  dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => showSlide(index));
+  });
+
+  // Scroll reveal animations
+  const observerOptions = {
+    threshold: 0.15,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, observerOptions);
+
+  // Animate all cards on scroll
+  document.querySelectorAll('.pkg-card, .svc-card, .why-card').forEach(card => {
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(50px)';
+    card.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+    observer.observe(card);
+  });
+
+  // Parallax effect on scroll
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        const scrolled = window.pageYOffset;
+        const parallaxElements = document.querySelectorAll('.hero-slider');
+        parallaxElements.forEach(el => {
+          el.style.transform = `translateY(${scrolled * 0.5}px)`;
+        });
+        ticking = false;
+      });
+      ticking = true;
+    }
+  });
+
+  // Add floating animation to emojis
+  const emojis = document.querySelectorAll('.text-\\[18rem\\]');
+  emojis.forEach(emoji => {
+    emoji.style.animation = 'float 6s ease-in-out infinite';
+  });
+</script>
+
+</body>
+</html>
