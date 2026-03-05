@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Services | SA Dream Destination</title>
+  <link rel="stylesheet" href="loader.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: '#FF6B35',
+            branddark: '#D94F1E',
+            navy: '#0F1F2E',
+            navy2: '#1A3A5C',
+            cream: '#FFF8F4',
+          },
+          fontFamily: { poppins: ['Poppins', 'sans-serif'] },
+        }
+      }
+    }
+  </script>
+  <style>
+    * { font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
+    .nav-link { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+    .nav-link:hover, .nav-link.active { color: #FF6B35 !important; background: rgba(255,107,53,0.08); border-radius: 8px; transform: translateY(-2px); }
+    .btn-brand { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+    .btn-brand:hover { background: #D94F1E; transform: translateY(-3px) scale(1.05); box-shadow: 0 12px 35px rgba(255,107,53,0.5); }
+    .svc-card { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); border: 2px solid transparent; }
+    .svc-card:hover { border-color: #FF6B35; transform: translateY(-8px) scale(1.03); box-shadow: 0 20px 50px rgba(255,107,53,0.2); }
+    .svc-card:hover .icon { transform: scale(1.2) rotate(10deg); }
+    .icon { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+  </style>
+</head>
+<body class="bg-cream text-navy">
+
+<div id="page-loader">
+  <div class="loader-clouds">
+    <div class="loader-cloud loader-cloud1"></div>
+    <div class="loader-cloud loader-cloud2"></div>
+  </div>
+  <div class="loader-content">
+    <div class="loader-airplane">✈️</div>
+    <div class="loader-text">Loading...</div>
+  </div>
+</div>
+
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur shadow-sm" style="height:72px;">
+  <div class="max-w-7xl mx-auto px-6 h-full flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-3 no-underline">
+      <div class="w-10 h-10 rounded-xl bg-brand flex items-center justify-center text-xl">✈️</div>
+      <div>
+        <div class="font-black text-navy leading-none text-base">SA <span class="text-brand">Dream</span> Destination</div>
+        <div class="text-xs text-gray-400 tracking-widest uppercase">Travel Agency · Kalyan / Mumbai</div>
+      </div>
+    </a>
+    <ul class="hidden lg:flex gap-1 list-none m-0 p-0">
+      <li><a href="index.html" class="nav-link px-4 py-2 text-sm font-semibold text-gray-500 no-underline">Home</a></li>
+      <li><a href="about.html" class="nav-link px-4 py-2 text-sm font-semibold text-gray-500 no-underline">About</a></li>
+      <li><a href="packages.html" class="nav-link px-4 py-2 text-sm font-semibold text-gray-500 no-underline">Packages</a></li>
+      <li><a href="services.html" class="nav-link active px-4 py-2 text-sm font-semibold text-gray-500 no-underline">Services</a></li>
+      <li><a href="contact.html" class="nav-link px-4 py-2 text-sm font-semibold text-gray-500 no-underline">Contact</a></li>
+    </ul>
+    <div class="hidden lg:flex items-center gap-3">
+      <span class="text-sm font-bold text-navy2">📞 000XXXXX</span>
+      <a href="contact.html" class="btn-brand bg-brand text-white px-5 py-2.5 rounded-xl text-sm font-bold no-underline">Book Now</a>
+    </div>
+    <button id="ham-btn" class="lg:hidden flex flex-col gap-1.5 p-2 bg-transparent border-0 cursor-pointer">
+      <span class="w-6 h-0.5 bg-navy rounded block"></span>
+      <span class="w-6 h-0.5 bg-navy rounded block"></span>
+      <span class="w-6 h-0.5 bg-navy rounded block"></span>
+    </button>
+  </div>
+  <div id="mob-menu" class="hidden lg:hidden bg-white border-t border-gray-100 px-6 pb-5 pt-3 shadow-lg">
+    <a href="index.html" class="block py-3 text-base font-semibold text-navy border-b border-gray-100 no-underline">🏠 Home</a>
+    <a href="about.html" class="block py-3 text-base font-semibold text-navy border-b border-gray-100 no-underline">👤 About</a>
+    <a href="packages.html" class="block py-3 text-base font-semibold text-navy border-b border-gray-100 no-underline">🗺️ Packages</a>
+    <a href="services.html" class="block py-3 text-base font-semibold text-brand border-b border-gray-100 no-underline">🛎️ Services</a>
+    <a href="contact.html" class="block py-3 text-base font-semibold text-navy border-b border-gray-100 no-underline">📞 Contact</a>
+    <a href="contact.html" class="mt-4 block text-center bg-brand text-white py-3 rounded-xl font-bold no-underline">Book Now – 000XXXXX</a>
+  </div>
+</nav>
+
+<div class="pt-[72px]">
+
+<section class="bg-gradient-to-br from-brand to-branddark py-24 px-6 text-center text-white relative overflow-hidden">
+  <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=1920&q=80" alt="Travel" class="absolute inset-0 w-full h-full object-cover opacity-20">
+  <div class="max-w-4xl mx-auto relative z-10">
+    <span class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm border border-white/30 text-white px-5 py-2 rounded-full text-xs font-black uppercase tracking-widest mb-6">🛎️ Our Services</span>
+    <h1 class="text-5xl lg:text-6xl font-black mb-5">Everything You Need for the Perfect Trip</h1>
+    <p class="text-xl text-white/90 max-w-2xl mx-auto">From tours to bookings, we handle it all — so you can just enjoy the journey!</p>
+  </div>
+</section>
+
+<section class="bg-white py-20 px-6">
+  <div class="max-w-6xl mx-auto">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      
+      <div class="svc-card bg-white rounded-2xl overflow-hidden shadow-lg">
+        <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=600&q=80" alt="Domestic Tours" class="w-full h-48 object-cover">
+        <div class="p-8">
+        <div class="icon w-16 h-16 bg-orange-100 rounded-xl flex items-center justify-center text-3xl mb-5 -mt-16 relative z-10 mx-auto shadow-lg">🗺️</div>
+        <h3 class="font-black text-navy text-xl mb-3">Domestic Tours</h3>
+        <p class="text-gray-500 text-sm leading-relaxed mb-4">Explore the beauty of India with our carefully curated domestic tour packages covering hill stations, beaches, heritage sites & more.</p>
+        <ul class="text-sm text-gray-600 space-y-2">
+          <li>✓ Manali, Kashmir, Ooty, Darjeeling</li>
+          <li>✓ Goa, Kerala, Rajasthan</li>
+          <li>✓ Custom itineraries available</li>
+        </ul>
+        </div>
+      </div>
+
+      <div class="svc-card bg-white rounded-2xl overflow-hidden shadow-lg">
+        <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=600&q=80" alt="International Tours" class="w-full h-48 object-cover">
+        <div class="p-8">
+        <div class="icon w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center text-3xl mb-5 -mt-16 relative z-10 mx-auto shadow-lg">✈️</div>
+        <h3 class="font-black text-navy text-xl mb-3">International Tours</h3>
+        <p class="text-gray-500 text-sm leading-relaxed mb-4">Dream destinations around the world — Dubai, Singapore, Thailand, Europe & more. We plan everything from visa to return.</p>
+        <ul class="text-sm text-gray-600 space-y-2">
+          <li>✓ Visa assistance included</li>
+          <li>✓ Flight + Hotel packages</li>
+          <li>✓ Guided tours & transfers</li>
+        </ul>
+        </div>
+      </div>
+
+      <div class="svc-card bg-white rounded-2xl overflow-hidden shadow-lg">
+        <img src="https://images.unsplash.com/photo-1464047736614-af63643285bf?w=600&q=80" alt="Honeymoon" class="w-full h-48 object-cover">
+        <div class="p-8">
+        <div class="icon w-16 h-16 bg-pink-100 rounded-xl flex items-center justify-center text-3xl mb-5 -mt-16 relative z-10 mx-auto shadow-lg">💑</div>
+        <h3 class="font-black text-navy text-xl mb-3">Honeymoon Packages</h3>
+        <p class="text-gray-500 text-sm leading-relaxed mb-4">Romantic getaways designed to make your special moments unforgettable. Luxury stays, candlelight dinners & more.</p>
+        <ul class="text-sm text-gray-600 space-y-2">
+          <li>✓ Romantic destinations</li>
+          <li>✓ Special couple activities</li>
+          <li>✓ Privacy & comfort guaranteed</li>
+        </ul>
+        </div>
+      </div>
+
+      <div class="svc-card bg-white rounded-2xl overflow-hidden shadow-lg">
+        <img src="https://images.unsplash.com/photo-1527004013197-933c4bb611b3?w=600&q=80" alt="Group Tours" class="w-full h-48 object-cover">
+        <div class="p-8">
+        <div class="icon w-16 h-16 bg-green-100 rounded-xl flex items-center justify-center text-3xl mb-5 -mt-16 relative z-10 mx-auto shadow-lg">👥</div>
+        <h3 class="font-black text-navy text-xl mb-3">Group Tours</h3>
+        <p class="text-gray-500 text-sm leading-relaxed mb-4">Best rates for families, friends & communities. Fun activities, comfortable stays & hassle-free travel for large groups.</p>
+        <ul class="text-sm text-gray-600 space-y-2">
+          <li>✓ Special group discounts</li>
+          <li>✓ Customized group activities</li>
+          <li>✓ Dedicated tour manager</li>
+        </ul>
+        </div>
+      </div>
+
+      <div class="svc-card bg-white rounded-2xl overflow-hidden shadow-lg">
+        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=600&q=80" alt="Picnics" class="w-full h-48 object-cover">
+        <div class="p-8">
+        <div class="icon w-16 h-16 bg-yellow-100 rounded-xl flex items-center justify-center text-3xl mb-5 -mt-16 relative z-10 mx-auto shadow-lg">🎒</div>
+        <h3 class="font-black text-navy text-xl mb-3">College / School / Office Picnics</h3>
+        <p class="text-gray-500 text-sm leading-relaxed mb-4">Safe, fun & smooth outings for students and corporate groups. Adventure activities, team building & more.</p>
+        <ul class="text-sm text-gray-600 space-y-2">
+          <li>✓ Safe & supervised trips</li>
+          <li>✓ Adventure & fun activities</li>
+          <li>✓ Budget-friendly packages</li>
+        </ul>
+        </div>
+      </div>
+
+      <div class="svc-card bg-white rounded-2xl overflow-hidden shadow-lg">
+        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80" alt="Hotel" class="w-full h-48 object-cover">
+        <div class="p-8">
+        <div class="icon w-16 h-16 bg-purple-100 rounded-xl flex items-center justify-center text-3xl mb-5 -mt-16 relative z-10 mx-auto shadow-lg">🏨</div>
+        <h3 class="font-black text-navy text-xl mb-3">Hotel Booking</h3>
+        <p class="text-gray-500 text-sm leading-relaxed mb-4">Book hotels at the best rates across India & abroad. From budget stays to luxury resorts — we've got you covered.</p>
+        <ul class="text-sm text-gray-600 space-y-2">
+          <li>✓ Best price guarantee</li>
+          <li>✓ Verified properties only</li>
+          <li>✓ Instant confirmation</li>
+        </ul>
+        </div>
+      </div>
+
+      <div class="svc-card bg-white rounded-2xl overflow-hidden shadow-lg">
+        <img src="https://images.unsplash.com/photo-1474487548417-781cb71495f3?w=600&q=80" alt="Train" class="w-full h-48 object-cover">
+        <div class="p-8">
+        <div class="icon w-16 h-16 bg-red-100 rounded-xl flex items-center justify-center text-3xl mb-5 -mt-16 relative z-10 mx-auto shadow-lg">🚆</div>
+        <h3 class="font-black text-navy text-xl mb-3">Train Booking</h3>
+        <p class="text-gray-500 text-sm leading-relaxed mb-4">Hassle-free train ticket booking for all classes. We handle IRCTC bookings, tatkal tickets & group reservations.</p>
+        <ul class="text-sm text-gray-600 space-y-2">
+          <li>✓ All classes available</li>
+          <li>✓ Tatkal booking service</li>
+          <li>✓ Group booking assistance</li>
+        </ul>
+        </div>
+      </div>
+
+      <div class="svc-card bg-white rounded-2xl overflow-hidden shadow-lg">
+        <img src="https://images.unsplash.com/photo-1464037866556-6812c9d1c72e?w=600&q=80" alt="Flight" class="w-full h-48 object-cover">
+        <div class="p-8">
+        <div class="icon w-16 h-16 bg-indigo-100 rounded-xl flex items-center justify-center text-3xl mb-5 -mt-16 relative z-10 mx-auto shadow-lg">✈️</div>
+        <h3 class="font-black text-navy text-xl mb-3">Flight Booking</h3>
+        <p class="text-gray-500 text-sm leading-relaxed mb-4">Domestic & international flight bookings at competitive prices. Compare airlines & get the best deals instantly.</p>
+        <ul class="text-sm text-gray-600 space-y-2">
+          <li>✓ Domestic & international</li>
+          <li>✓ Best fare comparison</li>
+          <li>✓ Easy cancellation & refund</li>
+        </ul>
+        </div>
+      </div>
+
+      <div class="svc-card bg-white rounded-2xl overflow-hidden shadow-lg">
+        <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=600&q=80" alt="Bus" class="w-full h-48 object-cover">
+        <div class="p-8">
+        <div class="icon w-16 h-16 bg-teal-100 rounded-xl flex items-center justify-center text-3xl mb-5 -mt-16 relative z-10 mx-auto shadow-lg">🚌</div>
+        <h3 class="font-black text-navy text-xl mb-3">Bus Booking</h3>
+        <p class="text-gray-500 text-sm leading-relaxed mb-4">Book AC/Non-AC buses for intercity & interstate travel. Sleeper, semi-sleeper & luxury coaches available.</p>
+        <ul class="text-sm text-gray-600 space-y-2">
+          <li>✓ AC & Non-AC options</li>
+          <li>✓ Sleeper & seater buses</li>
+          <li>✓ Live tracking available</li>
+        </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="py-20 px-6 bg-gradient-to-br from-brand to-branddark text-center text-white">
+  <div class="max-w-3xl mx-auto">
+    <h2 class="text-4xl font-black mb-4">Need Help Choosing? 🤔</h2>
+    <p class="text-white/90 text-lg mb-8">Contact us today and we'll help you plan the perfect trip!</p>
+    <a href="contact.html" class="bg-white text-brand font-black px-10 py-4 rounded-2xl text-base no-underline hover:shadow-2xl transition-all hover:-translate-y-1 inline-block">📞 Contact Us Now</a>
+  </div>
+</section>
+
+<footer class="bg-navy py-16 px-6">
+  <div class="max-w-6xl mx-auto text-center">
+    <div class="flex items-center justify-center gap-3 mb-4">
+      <div class="w-10 h-10 bg-brand rounded-xl flex items-center justify-center text-lg">✈️</div>
+      <div class="font-black text-white text-base">SA <span class="text-brand">Dream</span> Destination</div>
+    </div>
+    <p class="text-white/40 text-sm mb-4">📍 Kalyan / Mumbai · 📞 000XXXXX</p>
+    <div class="pt-8 text-white/25 text-xs">© 2025 SA Dream Destination. All Rights Reserved.</div>
+  </div>
+</footer>
+
+</div>
+
+<script>
+  document.getElementById('ham-btn').addEventListener('click', () => {
+    document.getElementById('mob-menu').classList.toggle('hidden');
+  });
+
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      document.getElementById('page-loader').classList.add('hidden');
+    }, 1000);
+  });
+</script>
+
+</body>
+</html>

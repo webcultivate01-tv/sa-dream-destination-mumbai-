@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Packages | SA Dream Destination</title>
+  <link rel="stylesheet" href="loader.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: '#FF6B35',
+            branddark: '#D94F1E',
+            navy: '#0F1F2E',
+            navy2: '#1A3A5C',
+            cream: '#FFF8F4',
+          },
+          fontFamily: { poppins: ['Poppins', 'sans-serif'] },
+        }
+      }
+    }
+  </script>
+  <style>
+    * { font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
+    .nav-link { transition: all 0.3s; }
+    .nav-link:hover, .nav-link.active { color: #FF6B35 !important; background: rgba(255,107,53,0.08); border-radius: 8px; }
+    .btn-brand { transition: all 0.4s; }
+    .btn-brand:hover { background: #D94F1E; transform: translateY(-3px); box-shadow: 0 12px 35px rgba(255,107,53,0.5); }
+    .pkg-card { transition: all 0.4s; border: 2px solid transparent; }
+    .pkg-card:hover { transform: translateY(-8px); box-shadow: 0 25px 60px rgba(255,107,53,0.25); border-color: #FF6B35; }
+    .transport-btn { transition: all 0.3s; }
+    .transport-btn.active { background: #FF6B35; color: white; }
+  </style>
+</head>
+<body class="bg-cream text-navy">
+
+<div id="page-loader">
+  <div class="loader-clouds">
+    <div class="loader-cloud loader-cloud1"></div>
+    <div class="loader-cloud loader-cloud2"></div>
+  </div>
+  <div class="loader-content">
+    <div class="loader-airplane">✈️</div>
+    <div class="loader-text">Loading...</div>
+  </div>
+</div>
+
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur shadow-sm" style="height:72px;">
+  <div class="max-w-7xl mx-auto px-6 h-full flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-3 no-underline">
+      <div class="w-10 h-10 rounded-xl bg-brand flex items-center justify-center text-xl">✈️</div>
+      <div>
+        <div class="font-black text-navy leading-none text-base">SA <span class="text-brand">Dream</span> Destination</div>
+        <div class="text-xs text-gray-400 tracking-widest uppercase">Travel Agency · Kalyan / Mumbai</div>
+      </div>
+    </a>
+    <ul class="hidden lg:flex gap-1 list-none m-0 p-0">
+      <li><a href="index.html" class="nav-link px-4 py-2 text-sm font-semibold text-gray-500 no-underline">Home</a></li>
+      <li><a href="about.html" class="nav-link px-4 py-2 text-sm font-semibold text-gray-500 no-underline">About</a></li>
+      <li><a href="packages.html" class="nav-link active px-4 py-2 text-sm font-semibold text-gray-500 no-underline">Packages</a></li>
+      <li><a href="contact.html" class="nav-link px-4 py-2 text-sm font-semibold text-gray-500 no-underline">Contact</a></li>
+    </ul>
+    <div class="hidden lg:flex items-center gap-3">
+      <span class="text-sm font-bold text-navy2">📞 000XXXXX</span>
+      <a href="contact.html" class="btn-brand bg-brand text-white px-5 py-2.5 rounded-xl text-sm font-bold no-underline">Book Now</a>
+    </div>
+    <button id="ham-btn" class="lg:hidden flex flex-col gap-1.5 p-2 bg-transparent border-0 cursor-pointer">
+      <span class="w-6 h-0.5 bg-navy rounded block"></span>
+      <span class="w-6 h-0.5 bg-navy rounded block"></span>
+      <span class="w-6 h-0.5 bg-navy rounded block"></span>
+    </button>
+  </div>
+  <div id="mob-menu" class="hidden lg:hidden bg-white border-t border-gray-100 px-6 pb-5 pt-3 shadow-lg">
+    <a href="index.html" class="block py-3 text-base font-semibold text-navy border-b border-gray-100 no-underline">🏠 Home</a>
+    <a href="about.html" class="block py-3 text-base font-semibold text-navy border-b border-gray-100 no-underline">👤 About</a>
+    <a href="packages.html" class="block py-3 text-base font-semibold text-brand border-b border-gray-100 no-underline">🗺️ Packages</a>
+    <a href="contact.html" class="block py-3 text-base font-semibold text-navy border-b border-gray-100 no-underline">📞 Contact</a>
+  </div>
+</nav>
+
+<div class="pt-[72px]">
+
+<section class="bg-gradient-to-br from-brand to-branddark py-24 px-6 text-center text-white">
+  <div class="max-w-4xl mx-auto">
+    <span class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm border border-white/30 text-white px-5 py-2 rounded-full text-xs font-black uppercase tracking-widest mb-6">🗺️ Tour Packages</span>
+    <h1 class="text-5xl lg:text-6xl font-black mb-5">Explore Dream Destinations</h1>
+    <p class="text-xl text-white/90 max-w-2xl mx-auto">Choose your transport & start your journey!</p>
+  </div>
+</section>
+
+<section class="bg-white py-20 px-6">
+  <div class="max-w-6xl mx-auto">
+    
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      
+      <!-- Manali Package -->
+      <div class="pkg-card bg-white rounded-2xl overflow-hidden shadow-lg">
+        <img src="https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=800&q=80" alt="Manali" class="w-full h-56 object-cover">
+        <div class="p-6">
+          <div class="text-xs font-black text-brand uppercase tracking-wider mb-2">📍 Himachal Pradesh</div>
+          <h3 class="font-black text-navy text-2xl mb-2">Manali Package</h3>
+          <p class="text-gray-500 text-sm mb-4">Solang Valley · Rohtang Pass · Atal Tunnel · Kullu · Manikaran</p>
+          
+          <div class="mb-5">
+            <div class="text-xs font-bold text-gray-400 uppercase mb-2">Choose Transport:</div>
+            <div class="flex gap-2">
+              <button class="transport-btn flex-1 border-2 border-gray-200 rounded-lg py-2 px-3 text-sm font-bold hover:border-brand">
+                🚆 Train<br><span class="text-xs text-gray-500">₹20,000</span>
+              </button>
+              <button class="transport-btn flex-1 border-2 border-gray-200 rounded-lg py-2 px-3 text-sm font-bold hover:border-brand">
+                ✈️ Flight<br><span class="text-xs text-gray-500">₹27,000</span>
+              </button>
+              <button class="transport-btn flex-1 border-2 border-gray-200 rounded-lg py-2 px-3 text-sm font-bold hover:border-brand">
+                🚌 Bus<br><span class="text-xs text-gray-500">₹18,000</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="border-t border-gray-100 pt-4 flex items-center justify-between">
+            <div>
+              <div class="text-brand font-black text-xl">Starting ₹18,000</div>
+              <div class="text-gray-400 text-xs">per person</div>
+            </div>
+            <a href="contact.html" class="bg-brand text-white text-sm font-bold px-6 py-3 rounded-lg no-underline hover:bg-branddark transition-colors">Book Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Kashmir Package -->
+      <div class="pkg-card bg-white rounded-2xl overflow-hidden shadow-lg">
+        <img src="https://images.unsplash.com/photo-1605649487212-47bdab064df7?w=800&q=80" alt="Kashmir" class="w-full h-56 object-cover">
+        <div class="p-6">
+          <div class="text-xs font-black text-brand uppercase tracking-wider mb-2">📍 Jammu & Kashmir</div>
+          <h3 class="font-black text-navy text-2xl mb-2">Kashmir Package</h3>
+          <p class="text-gray-500 text-sm mb-4">Srinagar · Gulmarg · Sonmarg · Pahalgam · Dal Lake · Shikara Ride</p>
+          
+          <div class="mb-5">
+            <div class="text-xs font-bold text-gray-400 uppercase mb-2">Choose Transport:</div>
+            <div class="flex gap-2">
+              <button class="transport-btn flex-1 border-2 border-gray-200 rounded-lg py-2 px-3 text-sm font-bold hover:border-brand">
+                🚆 Train<br><span class="text-xs text-gray-500">₹27,000</span>
+              </button>
+              <button class="transport-btn flex-1 border-2 border-gray-200 rounded-lg py-2 px-3 text-sm font-bold hover:border-brand">
+                ✈️ Flight<br><span class="text-xs text-gray-500">₹35,000</span>
+              </button>
+              <button class="transport-btn flex-1 border-2 border-gray-200 rounded-lg py-2 px-3 text-sm font-bold hover:border-brand">
+                🚌 Bus<br><span class="text-xs text-gray-500">₹25,000</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="border-t border-gray-100 pt-4 flex items-center justify-between">
+            <div>
+              <div class="text-brand font-black text-xl">Starting ₹25,000</div>
+              <div class="text-gray-400 text-xs">per person</div>
+            </div>
+            <a href="contact.html" class="bg-brand text-white text-sm font-bold px-6 py-3 rounded-lg no-underline hover:bg-branddark transition-colors">Book Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ooty Package -->
+      <div class="pkg-card bg-white rounded-2xl overflow-hidden shadow-lg">
+        <img src="https://images.unsplash.com/photo-1596895111956-bf1cf0599ce5?w=800&q=80" alt="Ooty" class="w-full h-56 object-cover">
+        <div class="p-6">
+          <div class="text-xs font-black text-brand uppercase tracking-wider mb-2">📍 Tamil Nadu</div>
+          <h3 class="font-black text-navy text-2xl mb-2">Ooty & Kodaikanal</h3>
+          <p class="text-gray-500 text-sm mb-4">Ooty Lake · Botanical Garden · Coaker's Walk · Tea Gardens</p>
+          
+          <div class="mb-5">
+            <div class="text-xs font-bold text-gray-400 uppercase mb-2">Choose Transport:</div>
+            <div class="flex gap-2">
+              <button class="transport-btn flex-1 border-2 border-gray-200 rounded-lg py-2 px-3 text-sm font-bold hover:border-brand">
+                🚆 Train<br><span class="text-xs text-gray-500">₹20,000</span>
+              </button>
+              <button class="transport-btn flex-1 border-2 border-gray-200 rounded-lg py-2 px-3 text-sm font-bold hover:border-brand">
+                ✈️ Flight<br><span class="text-xs text-gray-500">₹25,000</span>
+              </button>
+              <button class="transport-btn flex-1 border-2 border-gray-200 rounded-lg py-2 px-3 text-sm font-bold hover:border-brand">
+                🚌 Bus<br><span class="text-xs text-gray-500">₹17,000</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="border-t border-gray-100 pt-4 flex items-center justify-between">
+            <div>
+              <div class="text-brand font-black text-xl">Starting ₹17,000</div>
+              <div class="text-gray-400 text-xs">per person</div>
+            </div>
+            <a href="contact.html" class="bg-brand text-white text-sm font-bold px-6 py-3 rounded-lg no-underline hover:bg-branddark transition-colors">Book Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Darjeeling Package -->
+      <div class="pkg-card bg-white rounded-2xl overflow-hidden shadow-lg">
+        <img src="https://images.unsplash.com/photo-1587474260584-136574528ed5?w=800&q=80" alt="Darjeeling" class="w-full h-56 object-cover">
+        <div class="p-6">
+          <div class="text-xs font-black text-brand uppercase tracking-wider mb-2">📍 West Bengal</div>
+          <h3 class="font-black text-navy text-2xl mb-2">Darjeeling Package</h3>
+          <p class="text-gray-500 text-sm mb-4">Tiger Hill · Batasia Loop · Tea Gardens · Toy Train · Gangtok</p>
+          
+          <div class="mb-5">
+            <div class="text-xs font-bold text-gray-400 uppercase mb-2">Choose Transport:</div>
+            <div class="flex gap-2">
+              <button class="transport-btn flex-1 border-2 border-gray-200 rounded-lg py-2 px-3 text-sm font-bold hover:border-brand">
+                🚆 Train<br><span class="text-xs text-gray-500">₹20,000</span>
+              </button>
+              <button class="transport-btn flex-1 border-2 border-gray-200 rounded-lg py-2 px-3 text-sm font-bold hover:border-brand">
+                ✈️ Flight<br><span class="text-xs text-gray-500">₹24,000</span>
+              </button>
+              <button class="transport-btn flex-1 border-2 border-gray-200 rounded-lg py-2 px-3 text-sm font-bold hover:border-brand">
+                🚌 Bus<br><span class="text-xs text-gray-500">₹18,000</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="border-t border-gray-100 pt-4 flex items-center justify-between">
+            <div>
+              <div class="text-brand font-black text-xl">Starting ₹18,000</div>
+              <div class="text-gray-400 text-xs">per person</div>
+            </div>
+            <a href="contact.html" class="bg-brand text-white text-sm font-bold px-6 py-3 rounded-lg no-underline hover:bg-branddark transition-colors">Book Now</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="py-20 px-6 bg-gradient-to-br from-brand to-branddark text-center text-white">
+  <div class="max-w-3xl mx-auto">
+    <h2 class="text-4xl font-black mb-4">Ready to Book Your Dream Trip? 🌍</h2>
+    <p class="text-white/90 text-lg mb-8">Contact us now for best prices & custom packages!</p>
+    <a href="contact.html" class="bg-white text-brand font-black px-10 py-4 rounded-2xl text-base no-underline hover:shadow-2xl transition-all hover:-translate-y-1 inline-block">📞 Contact Us Now</a>
+  </div>
+</section>
+
+<footer class="bg-navy py-16 px-6">
+  <div class="max-w-6xl mx-auto text-center">
+    <div class="flex items-center justify-center gap-3 mb-4">
+      <div class="w-10 h-10 bg-brand rounded-xl flex items-center justify-center text-lg">✈️</div>
+      <div class="font-black text-white text-base">SA <span class="text-brand">Dream</span> Destination</div>
+    </div>
+    <p class="text-white/40 text-sm mb-4">📍 Kalyan / Mumbai · 📞 000XXXXX</p>
+    <div class="pt-8 text-white/25 text-xs">© 2025 SA Dream Destination. All Rights Reserved.</div>
+  </div>
+</footer>
+
+</div>
+
+<script>
+  document.getElementById('ham-btn').addEventListener('click', () => {
+    document.getElementById('mob-menu').classList.toggle('hidden');
+  });
+
+  document.querySelectorAll('.transport-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      this.parentElement.querySelectorAll('.transport-btn').forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      document.getElementById('page-loader').classList.add('hidden');
+    }, 1000);
+  });
+</script>
+
+</body>
+</html>
