@@ -44,6 +44,8 @@
     @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
     @keyframes pulse { 0%,100%{box-shadow:0 0 0 0 rgba(6,214,160,0.4)} 70%{box-shadow:0 0 0 8px rgba(6,214,160,0)} }
     @keyframes shimmer { 0% { background-position: -1000px 0; } 100% { background-position: 1000px 0; } }
+    @keyframes scroll { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
+    .scrolling-text { animation: scroll 15s linear infinite; white-space: nowrap; }
     .fade-up-1 { animation: fadeUp 0.8s 0.1s cubic-bezier(0.4, 0, 0.2, 1) both; }
     .fade-up-2 { animation: fadeUp 0.8s 0.3s cubic-bezier(0.4, 0, 0.2, 1) both; }
     .fade-up-3 { animation: fadeUp 0.8s 0.5s cubic-bezier(0.4, 0, 0.2, 1) both; }
@@ -105,7 +107,9 @@
       <img src="Gallery/logo.jpeg" alt="SA Dream Destination Logo" class="w-10 h-10 rounded-xl object-cover">
       <div>
         <div class="font-black text-navy leading-none text-base">SA <span class="text-brand">Dream</span> Destination</div>
-        <div class="text-xs text-gray-400 tracking-widest uppercase">Travel Agency · Kalyan / Mumbai</div>
+        <div class="text-xs text-gray-400 tracking-widest uppercase overflow-hidden" style="max-width: 220px;">
+          <div class="scrolling-text">✈️ Best Deals • 24/7 Support • Trusted Agency • Book Now</div>
+        </div>
       </div>
     </a>
 
@@ -176,7 +180,7 @@
       <div class="max-w-4xl mx-auto">
         <div class="fade-up-1 inline-flex items-center gap-2 bg-yellow-400/20 backdrop-blur-sm border border-yellow-400/40 text-yellow-300 px-5 py-2 rounded-full text-sm font-bold tracking-widest uppercase mb-8">
           <span class="w-2.5 h-2.5 bg-yellow-300 rounded-full blink-dot"></span>
-          Kalyan / Mumbai • Open 24/7
+          🌟 Premium Travel Experience
         </div>
 
         <h1 class="fade-up-2 text-6xl lg:text-8xl font-black text-white leading-tight mb-6">
@@ -186,7 +190,7 @@
 
         <p class="fade-up-3 text-xl lg:text-2xl text-white/95 leading-relaxed mb-10 max-w-3xl mx-auto">
           <span class="text-yellow-300 font-bold">"Turning Dreams into Journeys & Memories"</span><br>
-          <span class="text-lg">Safe • Affordable • Trusted Travel Partner</span>
+          <span class="text-lg">🌍 Explore India's Beauty • 💫 Create Unforgettable Moments</span>
         </p>
 
         <div class="fade-up-4 flex flex-wrap gap-5 justify-center mb-12">
@@ -268,7 +272,7 @@
 ════════════════════════════ -->
 <section class="bg-white py-20 px-6">
   <div class="max-w-6xl mx-auto">
-    <div class="text-center mb-14">
+    <div class="text-center mb-14 fade-up-1">
       <span class="inline-flex items-center gap-2 bg-brand/10 text-brand px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-widest mb-4">✨ Why Choose Us</span>
       <h2 class="text-4xl font-black text-navy mb-3">Travel With <span class="text-brand">Confidence</span></h2>
       <p class="text-gray-500 text-base max-w-xl mx-auto">We make every journey safe, comfortable & memorable at prices that won't break your bank.</p>
