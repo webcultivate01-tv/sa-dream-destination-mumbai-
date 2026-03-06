@@ -27,6 +27,7 @@
     * { font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
     @keyframes fadeUp { 0% { opacity:0; transform:translateY(50px); } 100% { opacity:1; transform:translateY(0); } }
     @keyframes fadeInScale { 0% { opacity:0; transform:scale(0.8); } 100% { opacity:1; transform:scale(1); } }
+    @keyframes slideIn { 0% { transform: translateX(-100px); opacity: 0; } 100% { transform: translateX(0); opacity: 1; } }
     @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-20px); } }
     @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
     @keyframes pulse { 0%,100%{box-shadow:0 0 0 0 rgba(6,214,160,0.4)} 70%{box-shadow:0 0 0 8px rgba(6,214,160,0)} }
@@ -73,10 +74,10 @@
 <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur shadow-sm" style="height:72px;">
   <div class="max-w-7xl mx-auto px-6 h-full flex items-center justify-between">
     <a href="index.html" class="flex items-center gap-3 no-underline">
-      <img src="Gallery/logo.jpeg" alt="SA Dream Destination Logo" class="w-10 h-10 rounded-xl object-cover">
+      <img src="Gallery/logo.jpeg" alt="SA Dream Destination Logo" class="w-10 h-10 rounded-xl object-contain bg-white p-1">
       <div>
         <div class="font-black text-navy leading-none text-base">SA <span class="text-brand">Dream</span> Destination</div>
-        <div class="text-xs text-gray-400 tracking-widest uppercase">Travel Agency · Kalyan / Mumbai</div>
+        <div class="text-xs font-semibold tracking-wide" style="background: linear-gradient(90deg, #FF6B35, #FFD166, #FF6B35); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: shimmer 3s infinite; background-size: 200% 100%;">Turning Dreams into Journeys & Memories</div>
       </div>
     </a>
     <ul class="hidden lg:flex gap-1 list-none m-0 p-0">
@@ -87,7 +88,6 @@
       <li><a href="contact.html" class="nav-link px-4 py-2 text-sm font-semibold text-gray-500 no-underline">Contact</a></li>
     </ul>
     <div class="hidden lg:flex items-center gap-3">
-      <span class="text-sm font-bold text-navy2">📞 000XXXXX</span>
       <a href="contact.html" class="btn-brand bg-brand text-white px-5 py-2.5 rounded-xl text-sm font-bold no-underline">Book Now</a>
     </div>
     <button id="ham-btn" class="lg:hidden flex flex-col gap-1.5 p-2 bg-transparent border-0 cursor-pointer">
@@ -160,7 +160,7 @@
       </div>
       <div class="scroll-reveal relative" style="transition-delay: 0.2s;">
         <div class="relative rounded-3xl overflow-hidden shadow-2xl">
-          <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800&q=80" alt="Travel" class="w-full h-[500px] object-cover">
+          <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=800&q=80" alt="Travel" class="w-full h-[500px] object-cover" style="animation: slideIn 1s ease-out both;">
           <div class="absolute inset-0 bg-gradient-to-t from-navy/60 to-transparent"></div>
           <div class="absolute bottom-8 left-8 right-8">
             <div class="bg-white/95 backdrop-blur-sm rounded-2xl p-6 shadow-xl">
@@ -213,8 +213,11 @@
 </section>
 
 <!-- STATS SECTION -->
-<section class="py-20 px-6 relative overflow-hidden" style="background: linear-gradient(135deg, #FF6B35 0%, #FF8C5A 100%);">
-  <div class="absolute inset-0 flex items-center justify-center text-[20rem] opacity-[0.03] pointer-events-none">🌟</div>
+<section class="py-20 px-6 relative overflow-hidden">
+  <div class="absolute inset-0">
+    <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=1920&q=80" alt="Travel" class="w-full h-full object-cover">
+    <div class="absolute inset-0 bg-gradient-to-r from-brand/90 via-orange-500/85 to-brand/90"></div>
+  </div>
   <div class="max-w-6xl mx-auto relative z-10">
     <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
       <div class="text-center scroll-reveal">
@@ -238,37 +241,41 @@
 </section>
 
 <!-- CONTACT INFO -->
-<section class="bg-navy py-20 px-6">
-  <div class="max-w-4xl mx-auto text-center">
+<section class="py-20 px-6 relative overflow-hidden">
+  <div class="absolute inset-0">
+    <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=1920&q=80" alt="Travel" class="w-full h-full object-cover">
+    <div class="absolute inset-0 bg-gradient-to-r from-navy/95 via-navy2/90 to-brand/85"></div>
+  </div>
+  <div class="max-w-4xl mx-auto text-center relative z-10">
     <h2 class="text-5xl font-black text-white mb-6">Ready to Start Your <span class="text-brand">Journey?</span></h2>
-    <p class="text-white/70 text-xl mb-12">Contact us today and let's plan your dream vacation together!</p>
+    <p class="text-white/80 text-xl mb-12">Contact us today and let's plan your dream vacation together!</p>
     
     <div class="grid md:grid-cols-3 gap-6 mb-12">
-      <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 scroll-reveal">
+      <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 scroll-reveal hover:bg-white/20 transition-all cursor-pointer">
         <div class="text-4xl mb-4">📍</div>
-        <div class="text-white/50 text-sm mb-2">Location</div>
+        <div class="text-white/60 text-sm mb-2">Location</div>
         <div class="text-white font-bold">Kalyan / Mumbai, Maharashtra</div>
       </div>
-      <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 scroll-reveal" style="transition-delay: 0.1s;">
+      <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 scroll-reveal hover:bg-white/20 transition-all cursor-pointer" style="transition-delay: 0.1s;">
         <div class="text-4xl mb-4">📞</div>
-        <div class="text-white/50 text-sm mb-2">Call Us</div>
+        <div class="text-white/60 text-sm mb-2">Call Us</div>
         <div class="text-white font-bold">000XXXXX</div>
       </div>
-      <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 scroll-reveal" style="transition-delay: 0.2s;">
+      <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 scroll-reveal hover:bg-white/20 transition-all cursor-pointer" style="transition-delay: 0.2s;">
         <div class="text-4xl mb-4">✉️</div>
-        <div class="text-white/50 text-sm mb-2">Email</div>
+        <div class="text-white/60 text-sm mb-2">Email</div>
         <div class="text-white font-bold text-sm">sadreamdestination@gmail.com</div>
       </div>
     </div>
 
-    <div class="inline-flex items-center gap-2 bg-green-500/20 border border-green-500/40 text-green-400 px-6 py-3 rounded-2xl text-base font-bold mb-8">
-      <span class="w-3 h-3 bg-green-400 rounded-full pulse-dot"></span>
+    <div class="inline-flex items-center gap-2 bg-green-500/20 border border-green-500/40 text-green-300 px-6 py-3 rounded-2xl text-base font-bold mb-8">
+      <span class="w-3 h-3 bg-green-300 rounded-full pulse-dot"></span>
       Open 24 Hours / 7 Days
     </div>
 
     <div class="flex flex-wrap gap-4 justify-center">
       <a href="contact.html" class="btn-brand bg-brand text-white px-10 py-5 rounded-2xl font-black text-lg no-underline">📞 Contact Us Now</a>
-      <a href="packages.html" class="btn-outline border-2 border-white/50 text-white px-10 py-5 rounded-2xl font-black text-lg no-underline hover:bg-white/10 transition-all">🗺️ View Packages</a>
+      <a href="packages.html" class="bg-white/20 backdrop-blur-sm border-2 border-white/50 text-white px-10 py-5 rounded-2xl font-black text-lg no-underline hover:bg-white/30 transition-all">🗺️ View Packages</a>
     </div>
   </div>
 </section>
@@ -279,7 +286,7 @@
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-white/10">
       <div>
         <div class="flex items-center gap-3 mb-4">
-          <div class="w-10 h-10 bg-brand rounded-xl flex items-center justify-center text-lg">✈️</div>
+          <img src="Gallery/logo.jpeg" alt="SA Dream Destination Logo" class="w-10 h-10 rounded-xl object-contain bg-white p-1">
           <div class="font-black text-white text-base">SA <span class="text-brand">Dream</span> Destination</div>
         </div>
         <p class="text-white/40 text-sm leading-relaxed mb-5">"Turning Dreams into Journeys & Memories" — Your trusted travel partner from Kalyan, Mumbai.</p>
@@ -313,7 +320,10 @@
       </div>
     </div>
     <div class="pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-white/25 text-xs">
-      <span>© 2025 SA Dream Destination. All Rights Reserved.</span>
+      <div class="flex items-center gap-2">
+        <img src="Gallery/logo.jpeg" alt="Logo" class="w-6 h-6 rounded object-contain bg-white p-0.5">
+        <span>© 2025 SA Dream Destination. All Rights Reserved.</span>
+      </div>
       <span>Made with ❤️ in Mumbai</span>
     </div>
   </div>
