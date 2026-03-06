@@ -33,6 +33,12 @@
     .pkg-card:hover { transform: translateY(-8px); box-shadow: 0 25px 60px rgba(255,107,53,0.25); border-color: #FF6B35; }
     .transport-btn { transition: all 0.3s; }
     .transport-btn.active { background: #FF6B35; color: white; }
+    .hero-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; transform: translateX(100%); transition: transform 1s ease-in-out; }
+    .hero-slide.active { transform: translateX(0); }
+    .hero-slide.prev { transform: translateX(-100%); }
+    .hero-slide img { width: 100%; height: 100%; object-fit: cover; }
+    #bookingModal { display: none; }
+    #bookingModal.show { display: flex; }
   </style>
 </head>
 <body class="bg-cream text-navy">
@@ -85,11 +91,23 @@
 
 <div class="pt-[72px]">
 
-<section class="bg-gradient-to-br from-brand to-branddark py-24 px-6 text-center text-white">
-  <div class="max-w-4xl mx-auto">
+<section class="bg-gradient-to-br from-brand to-branddark py-24 px-6 text-center text-white relative" style="height:400px; overflow:hidden;">
+  <div class="hero-slide" style="transform:translateX(0);">
+    <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=1920&q=80" alt="Travel 1">
+  </div>
+  <div class="hero-slide" style="transform:translateX(100%);">
+    <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=1920&q=80" alt="Travel 2">
+  </div>
+  <div class="hero-slide" style="transform:translateX(100%);">
+    <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1920&q=80" alt="Travel 3">
+  </div>
+  <div class="absolute inset-0 bg-gradient-to-br from-brand/60 to-branddark/60"></div>
+  <div class="max-w-4xl mx-auto relative z-10 flex items-center justify-center" style="height:100%;">
+    <div>
     <span class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm border border-white/30 text-white px-5 py-2 rounded-full text-xs font-black uppercase tracking-widest mb-6">🗺️ Tour Packages</span>
     <h1 class="text-5xl lg:text-6xl font-black mb-5">Explore Dream Destinations</h1>
     <p class="text-xl text-white/90 max-w-2xl mx-auto">Choose your transport & start your journey!</p>
+    </div>
   </div>
 </section>
 
@@ -98,134 +116,98 @@
     
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
       
-      <!-- Manali Package -->
       <div class="pkg-card bg-white rounded-2xl overflow-hidden shadow-lg">
         <img src="https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=800&q=80" alt="Manali" class="w-full h-56 object-cover">
         <div class="p-6">
           <div class="text-xs font-black text-brand uppercase tracking-wider mb-2">📍 Himachal Pradesh</div>
           <h3 class="font-black text-navy text-2xl mb-2">Manali Package</h3>
-          <p class="text-gray-500 text-sm mb-4">Solang Valley · Rohtang Pass · Atal Tunnel · Kullu · Manikaran</p>
-          
+          <p class="text-gray-500 text-sm mb-4">Solang Valley · Rohtang Pass · Atal Tunnel</p>
           <div class="mb-5">
             <div class="text-xs font-bold text-gray-400 uppercase mb-2">Choose Transport:</div>
             <div class="flex gap-2">
-              <button class="transport-btn flex-1 border-2 border-gray-200 rounded-lg py-2 px-3 text-sm font-bold hover:border-brand">
-                🚆 Train<br><span class="text-xs text-gray-500">₹20,000</span>
-              </button>
-              <button class="transport-btn flex-1 border-2 border-gray-200 rounded-lg py-2 px-3 text-sm font-bold hover:border-brand">
-                ✈️ Flight<br><span class="text-xs text-gray-500">₹27,000</span>
-              </button>
-              <button class="transport-btn flex-1 border-2 border-gray-200 rounded-lg py-2 px-3 text-sm font-bold hover:border-brand">
-                🚌 Bus<br><span class="text-xs text-gray-500">₹18,000</span>
-              </button>
+              <button class="transport-btn flex-1 border-2 border-gray-200 rounded-lg py-2 px-3 text-sm font-bold hover:border-brand">🚆 Train<br><span class="text-xs text-gray-500">₹20,000</span></button>
+              <button class="transport-btn flex-1 border-2 border-gray-200 rounded-lg py-2 px-3 text-sm font-bold hover:border-brand">✈️ Flight<br><span class="text-xs text-gray-500">₹27,000</span></button>
+              <button class="transport-btn flex-1 border-2 border-gray-200 rounded-lg py-2 px-3 text-sm font-bold hover:border-brand">🚌 Bus<br><span class="text-xs text-gray-500">₹18,000</span></button>
             </div>
           </div>
-
           <div class="border-t border-gray-100 pt-4 flex items-center justify-between">
             <div>
               <div class="text-brand font-black text-xl">Starting ₹18,000</div>
               <div class="text-gray-400 text-xs">per person</div>
             </div>
-            <a href="contact.html" class="bg-brand text-white text-sm font-bold px-6 py-3 rounded-lg no-underline hover:bg-branddark transition-colors">Book Now</a>
+            <button onclick="openBookingModal()" class="bg-brand text-white text-sm font-bold px-6 py-3 rounded-lg border-0 cursor-pointer hover:bg-branddark transition-colors">Book Now</button>
           </div>
         </div>
       </div>
 
-      <!-- Kashmir Package -->
       <div class="pkg-card bg-white rounded-2xl overflow-hidden shadow-lg">
         <img src="https://images.unsplash.com/photo-1605649487212-47bdab064df7?w=800&q=80" alt="Kashmir" class="w-full h-56 object-cover">
         <div class="p-6">
           <div class="text-xs font-black text-brand uppercase tracking-wider mb-2">📍 Jammu & Kashmir</div>
           <h3 class="font-black text-navy text-2xl mb-2">Kashmir Package</h3>
-          <p class="text-gray-500 text-sm mb-4">Srinagar · Gulmarg · Sonmarg · Pahalgam · Dal Lake · Shikara Ride</p>
-          
+          <p class="text-gray-500 text-sm mb-4">Srinagar · Gulmarg · Sonmarg · Pahalgam</p>
           <div class="mb-5">
             <div class="text-xs font-bold text-gray-400 uppercase mb-2">Choose Transport:</div>
             <div class="flex gap-2">
-              <button class="transport-btn flex-1 border-2 border-gray-200 rounded-lg py-2 px-3 text-sm font-bold hover:border-brand">
-                🚆 Train<br><span class="text-xs text-gray-500">₹27,000</span>
-              </button>
-              <button class="transport-btn flex-1 border-2 border-gray-200 rounded-lg py-2 px-3 text-sm font-bold hover:border-brand">
-                ✈️ Flight<br><span class="text-xs text-gray-500">₹30,000</span>
-              </button>
-              <button class="transport-btn flex-1 border-2 border-gray-200 rounded-lg py-2 px-3 text-sm font-bold hover:border-brand">
-                🚌 Bus<br><span class="text-xs text-gray-500">₹25,000</span>
-              </button>
+              <button class="transport-btn flex-1 border-2 border-gray-200 rounded-lg py-2 px-3 text-sm font-bold hover:border-brand">🚆 Train<br><span class="text-xs text-gray-500">₹27,000</span></button>
+              <button class="transport-btn flex-1 border-2 border-gray-200 rounded-lg py-2 px-3 text-sm font-bold hover:border-brand">✈️ Flight<br><span class="text-xs text-gray-500">₹30,000</span></button>
+              <button class="transport-btn flex-1 border-2 border-gray-200 rounded-lg py-2 px-3 text-sm font-bold hover:border-brand">🚌 Bus<br><span class="text-xs text-gray-500">₹25,000</span></button>
             </div>
           </div>
-
           <div class="border-t border-gray-100 pt-4 flex items-center justify-between">
             <div>
               <div class="text-brand font-black text-xl">Starting ₹25,000</div>
               <div class="text-gray-400 text-xs">per person</div>
             </div>
-            <a href="contact.html" class="bg-brand text-white text-sm font-bold px-6 py-3 rounded-lg no-underline hover:bg-branddark transition-colors">Book Now</a>
+            <button onclick="openBookingModal()" class="bg-brand text-white text-sm font-bold px-6 py-3 rounded-lg border-0 cursor-pointer hover:bg-branddark transition-colors">Book Now</button>
           </div>
         </div>
       </div>
 
-      <!-- Ooty Package -->
       <div class="pkg-card bg-white rounded-2xl overflow-hidden shadow-lg">
         <img src="https://images.unsplash.com/photo-1596895111956-bf1cf0599ce5?w=800&q=80" alt="Ooty" class="w-full h-56 object-cover">
         <div class="p-6">
           <div class="text-xs font-black text-brand uppercase tracking-wider mb-2">📍 Tamil Nadu</div>
           <h3 class="font-black text-navy text-2xl mb-2">Ooty & Kodaikanal</h3>
-          <p class="text-gray-500 text-sm mb-4">Ooty Lake · Botanical Garden · Coaker's Walk · Tea Gardens</p>
-          
+          <p class="text-gray-500 text-sm mb-4">Ooty Lake · Botanical Garden · Tea Gardens</p>
           <div class="mb-5">
             <div class="text-xs font-bold text-gray-400 uppercase mb-2">Choose Transport:</div>
             <div class="flex gap-2">
-              <button class="transport-btn flex-1 border-2 border-gray-200 rounded-lg py-2 px-3 text-sm font-bold hover:border-brand">
-                🚆 Train<br><span class="text-xs text-gray-500">₹20,000</span>
-              </button>
-              <button class="transport-btn flex-1 border-2 border-gray-200 rounded-lg py-2 px-3 text-sm font-bold hover:border-brand">
-                ✈️ Flight<br><span class="text-xs text-gray-500">₹25,000</span>
-              </button>
-              <button class="transport-btn flex-1 border-2 border-gray-200 rounded-lg py-2 px-3 text-sm font-bold hover:border-brand">
-                🚌 Bus<br><span class="text-xs text-gray-500">₹17,000</span>
-              </button>
+              <button class="transport-btn flex-1 border-2 border-gray-200 rounded-lg py-2 px-3 text-sm font-bold hover:border-brand">🚆 Train<br><span class="text-xs text-gray-500">₹20,000</span></button>
+              <button class="transport-btn flex-1 border-2 border-gray-200 rounded-lg py-2 px-3 text-sm font-bold hover:border-brand">✈️ Flight<br><span class="text-xs text-gray-500">₹25,000</span></button>
+              <button class="transport-btn flex-1 border-2 border-gray-200 rounded-lg py-2 px-3 text-sm font-bold hover:border-brand">🚌 Bus<br><span class="text-xs text-gray-500">₹17,000</span></button>
             </div>
           </div>
-
           <div class="border-t border-gray-100 pt-4 flex items-center justify-between">
             <div>
               <div class="text-brand font-black text-xl">Starting ₹17,000</div>
               <div class="text-gray-400 text-xs">per person</div>
             </div>
-            <a href="contact.html" class="bg-brand text-white text-sm font-bold px-6 py-3 rounded-lg no-underline hover:bg-branddark transition-colors">Book Now</a>
+            <button onclick="openBookingModal()" class="bg-brand text-white text-sm font-bold px-6 py-3 rounded-lg border-0 cursor-pointer hover:bg-branddark transition-colors">Book Now</button>
           </div>
         </div>
       </div>
 
-      <!-- Darjeeling Package -->
       <div class="pkg-card bg-white rounded-2xl overflow-hidden shadow-lg">
         <img src="https://images.unsplash.com/photo-1587474260584-136574528ed5?w=800&q=80" alt="Darjeeling" class="w-full h-56 object-cover">
         <div class="p-6">
           <div class="text-xs font-black text-brand uppercase tracking-wider mb-2">📍 West Bengal</div>
           <h3 class="font-black text-navy text-2xl mb-2">Darjeeling Package</h3>
-          <p class="text-gray-500 text-sm mb-4">Tiger Hill · Batasia Loop · Tea Gardens · Toy Train · Gangtok</p>
-          
+          <p class="text-gray-500 text-sm mb-4">Tiger Hill · Batasia Loop · Tea Gardens</p>
           <div class="mb-5">
             <div class="text-xs font-bold text-gray-400 uppercase mb-2">Choose Transport:</div>
             <div class="flex gap-2">
-              <button class="transport-btn flex-1 border-2 border-gray-200 rounded-lg py-2 px-3 text-sm font-bold hover:border-brand">
-                🚆 Train<br><span class="text-xs text-gray-500">₹20,000</span>
-              </button>
-              <button class="transport-btn flex-1 border-2 border-gray-200 rounded-lg py-2 px-3 text-sm font-bold hover:border-brand">
-                ✈️ Flight<br><span class="text-xs text-gray-500">₹24,000</span>
-              </button>
-              <button class="transport-btn flex-1 border-2 border-gray-200 rounded-lg py-2 px-3 text-sm font-bold hover:border-brand">
-                🚌 Bus<br><span class="text-xs text-gray-500">₹18,000</span>
-              </button>
+              <button class="transport-btn flex-1 border-2 border-gray-200 rounded-lg py-2 px-3 text-sm font-bold hover:border-brand">🚆 Train<br><span class="text-xs text-gray-500">₹20,000</span></button>
+              <button class="transport-btn flex-1 border-2 border-gray-200 rounded-lg py-2 px-3 text-sm font-bold hover:border-brand">✈️ Flight<br><span class="text-xs text-gray-500">₹24,000</span></button>
+              <button class="transport-btn flex-1 border-2 border-gray-200 rounded-lg py-2 px-3 text-sm font-bold hover:border-brand">🚌 Bus<br><span class="text-xs text-gray-500">₹18,000</span></button>
             </div>
           </div>
-
           <div class="border-t border-gray-100 pt-4 flex items-center justify-between">
             <div>
               <div class="text-brand font-black text-xl">Starting ₹18,000</div>
               <div class="text-gray-400 text-xs">per person</div>
             </div>
-            <a href="contact.html" class="bg-brand text-white text-sm font-bold px-6 py-3 rounded-lg no-underline hover:bg-branddark transition-colors">Book Now</a>
+            <button onclick="openBookingModal()" class="bg-brand text-white text-sm font-bold px-6 py-3 rounded-lg border-0 cursor-pointer hover:bg-branddark transition-colors">Book Now</button>
           </div>
         </div>
       </div>
@@ -234,8 +216,9 @@
   </div>
 </section>
 
-<section class="py-20 px-6 bg-gradient-to-br from-brand to-branddark text-center text-white">
-  <div class="max-w-3xl mx-auto">
+<section class="py-20 px-6 bg-gradient-to-br from-brand to-branddark text-center text-white relative overflow-hidden">
+  <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=1920&q=80" alt="Dream Trip" class="absolute inset-0 w-full h-full object-cover opacity-25">
+  <div class="max-w-3xl mx-auto relative z-10">
     <h2 class="text-4xl font-black mb-4">Ready to Book Your Dream Trip? 🌍</h2>
     <p class="text-white/90 text-lg mb-8">Contact us now for best prices & custom packages!</p>
     <a href="contact.html" class="bg-white text-brand font-black px-10 py-4 rounded-2xl text-base no-underline hover:shadow-2xl transition-all hover:-translate-y-1 inline-block">📞 Contact Us Now</a>
@@ -245,13 +228,44 @@
 <footer class="bg-navy py-16 px-6">
   <div class="max-w-6xl mx-auto text-center">
     <div class="flex items-center justify-center gap-3 mb-4">
-      <div class="w-10 h-10 bg-brand rounded-xl flex items-center justify-center text-lg">✈️</div>
+      <img src="Gallery/logo.jpeg" alt="Logo" class="w-10 h-10 rounded-xl object-cover">
       <div class="font-black text-white text-base">SA <span class="text-brand">Dream</span> Destination</div>
     </div>
     <p class="text-white/40 text-sm mb-4">📍 Kalyan / Mumbai · 📞 000XXXXX</p>
     <div class="pt-8 text-white/25 text-xs">© 2025 SA Dream Destination. All Rights Reserved.</div>
   </div>
 </footer>
+
+<div id="bookingModal" class="fixed inset-0 bg-black/50 items-center justify-center z-[9999]">
+  <div class="bg-white rounded-2xl p-8 max-w-md w-full mx-4 relative">
+    <button onclick="closeBookingModal()" class="absolute top-4 right-4 text-3xl text-gray-400 hover:text-gray-600 bg-transparent border-0 cursor-pointer leading-none">×</button>
+    <h2 class="text-2xl font-black text-navy mb-6">Book Your Trip</h2>
+    <form>
+      <div class="mb-4">
+        <label class="block text-sm font-bold text-gray-700 mb-2">Your Name *</label>
+        <input type="text" required class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-brand outline-none" placeholder="Enter your name">
+      </div>
+      <div class="mb-4">
+        <label class="block text-sm font-bold text-gray-700 mb-2">Phone Number *</label>
+        <input type="tel" required class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-brand outline-none" placeholder="Enter your phone">
+      </div>
+      <div class="mb-4">
+        <label class="block text-sm font-bold text-gray-700 mb-2">Select Package</label>
+        <select class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-brand outline-none">
+          <option>Manali Package</option>
+          <option>Kashmir Package</option>
+          <option>Ooty & Kodaikanal</option>
+          <option>Darjeeling Package</option>
+        </select>
+      </div>
+      <div class="mb-6">
+        <label class="block text-sm font-bold text-gray-700 mb-2">Number of Travellers</label>
+        <input type="number" min="1" class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-brand outline-none" placeholder="How many people?">
+      </div>
+      <button type="submit" class="w-full bg-brand text-white px-8 py-4 rounded-xl font-black text-base border-0 cursor-pointer hover:bg-branddark transition-colors">Submit Booking</button>
+    </form>
+  </div>
+</div>
 
 </div>
 
@@ -272,6 +286,26 @@
       document.getElementById('page-loader').classList.add('hidden');
     }, 1000);
   });
+
+  let currentSlide = 0;
+  const slides = document.querySelectorAll('.hero-slide');
+  
+  function nextSlide() {
+    slides[currentSlide].style.transform = 'translateX(-100%)';
+    currentSlide = (currentSlide + 1) % slides.length;
+    slides[currentSlide].style.transform = 'translateX(0)';
+    
+    let nextIndex = (currentSlide + 1) % slides.length;
+    slides[nextIndex].style.transform = 'translateX(100%)';
+  }
+  setInterval(nextSlide, 4000);
+
+  function openBookingModal() {
+    document.getElementById('bookingModal').classList.add('show');
+  }
+  function closeBookingModal() {
+    document.getElementById('bookingModal').classList.remove('show');
+  }
 </script>
 
 </body>
